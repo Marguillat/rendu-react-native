@@ -27,6 +27,7 @@ const getUpcoming = async () => {
   }
 }
 
+// n'est pas utilisé au finial
 const getGameImage = async (url) => {
   try {
     const response = await api.get('/'+url)
@@ -36,8 +37,18 @@ const getGameImage = async (url) => {
   }
 }
 
+const getGameById = async (gameId) => {
+  try {
+    const response = await api.get('/game/'+gameId)
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export {
   getHallOfFames,
   getUpcoming,
-  getGameImage
+  getGameImage,
+  getGameById
 }

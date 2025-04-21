@@ -1,35 +1,58 @@
-import { Image, StyleSheet, Text, View } from "react-native"
-import { getGameImage } from "../../services/opencritic.api"
-import PlateformChip from "../chips/PlateformChip"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import ChipList from "../lists/ChipList"
 
 function GameCard ({game,type = 'score'}) {
-  const cardImg = game?.images?.box?.sm || require('../../assets/Images/placeholder.jpg')
+  const navigation = useNavigation()
+
+  // img
+  let cardImg = 'https://www.systeme-de-design.gouv.fr/img/placeholder.16x9.png'
+  if (game?.images?.box?.sm ) {
+    cardImg = "https://img.opencritic.com/"+game?.images?.box?.sm 
+  }
+
+  // date 
+  const formattedDate = new Date(game?.firstReleaseDate).toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const handlePress = () => {
+    navigation.navigate("SingleGame",{
+      gameId: game.id
+    })
+  }
+
   return ( 
-    <View style={stylesheet.container}>
-      <Image 
-        style={stylesheet.image}
-        src={"https://img.opencritic.com/"+ cardImg}
-        width={100}
-        height={150}
-        />
-      <View style={stylesheet.textContainer}>
-        <Text style={stylesheet.heading}>{game.name}</Text>
-        <View style={stylesheet.chipContainner}>
-          {game?.Platforms?.map((plateform)=>{
-            return (
-              <PlateformChip key={plateform.id} plateform={plateform}/>
-            )
-          })}
-        </View>
-        <View style={stylesheet.scoreContainer}>
-          {game.topCriticScore != -1 ?
-            <Text style={stylesheet.score}>{game.topCriticScore}</Text>
-          : 
-          ""
+    <TouchableOpacity activeOpacity={0.5} onPress={handlePress}>
+      <View style={stylesheet.container}>
+        <Image 
+          style={stylesheet.image}
+          src={cardImg}
+          width={100}
+          height={150}
+          />
+        <View style={stylesheet.textContainer}>
+          <Text style={stylesheet.text}>{game.name}</Text>
+          <View style={stylesheet.chipContainner}>
+            {game?.Platforms ? (<ChipList data={game?.Platforms}/>) : ""}
+          </View>
+
+          {type == 'score' ?
+            (<View style={stylesheet.scoreContainer}>
+              <Text style={stylesheet.score}>{game.topCriticScore}</Text>
+            </View>)
+            :type == 'date' ?
+              (<View>
+                <Text style={stylesheet.date}>{formattedDate}</Text>
+              </View>)
+            : ""
           }
+          
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
    );
 }
 
@@ -41,17 +64,18 @@ const stylesheet = StyleSheet.create({
     borderColor:"#99999d",
     padding:10,
     marginRight:10,
-    minWidth:300,
+    width:300,
     borderRadius:20,
     gap:10
   },
   image:{
     borderRadius:10
   },
-  textContainer:{
-    flex:1,
-    flexDirection:'column',
-    gap:10
+  textContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    gap: 10,
+    maxWidth: '100%',
   },
   chipContainner:{
     display:'flex',
@@ -66,7 +90,20 @@ const stylesheet = StyleSheet.create({
   },
   score:{
     fontSize: 40,
-    fontWeight:"700"
+    fontWeight:"700",
+    color: '#ccc',
+  },
+  text:{
+    color: '#ccc',
+    flexShrink: 1, 
+    flexWrap: 'wrap',
+    flex: 0,
+    numberOfLines: 0,
+  },
+  date:{
+    color: '#ccc',
+    fontSize:25,
+    margin:'auto'
   }
 })
 

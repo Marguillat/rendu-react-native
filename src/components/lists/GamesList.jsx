@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native"
 import GameCard from "../cards/GameCard"
 
-function GamesList({data,title}) {
+function GamesList({data,title,type}) {
   return ( 
     <View>
       <Text style={stylesheet.heading}>{title}</Text>
@@ -11,7 +11,7 @@ function GamesList({data,title}) {
         showsHorizontalScrollIndicator={false}
         data={data}
         renderItem={({index,item,separators})=>(
-          <GameCard key={index} game={item}/>
+          <GameCard key={index} game={item} type={type}/>
         )}
       />
     </View>
@@ -20,7 +20,8 @@ function GamesList({data,title}) {
 
 const stylesheet = StyleSheet.create({
   heading: {
-    fontSize: 22
+    fontSize: 22,
+    color: '#ccc',
   },
 })
 
