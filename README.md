@@ -54,3 +54,6 @@ yarn android
 ```
 ## Screenshots
 Si tout à fonctionné vous devriez voir ceci : 
+![alt text](assets/capture-icon.png)
+![alt text](assets/capture-list.png)
+![alt text](assets/capture-single.png)
