@@ -13,7 +13,12 @@ function SingleGameScreen({route}) {
       <Text style={styles.name}>{game?.name}</Text>
 
       <Text style={styles.percent}>
-        {game?.percentRecommended?.toFixed(1)}% de recommandation par la critique
+        {game?.percentRecommended != -1 ? (
+          <>
+          {game?.percentRecommended?.toFixed(1)}% de recommandation par la critique
+          </>
+        ) : "Le jeu n'a pas encore suffisament de critiques"}
+        
       </Text>
       {game?.Platforms ? (
         <View>
@@ -21,7 +26,7 @@ function SingleGameScreen({route}) {
           <ChipList style={styles.chipContainner} data={game?.Platforms}/>
         </View>
       ) : <></> }
-      <Text style={styles.description}>{game?.description}</Text>
+      <Text style={styles.description}>{game?.description || "Ce jeu n'a pas encore de description"}</Text>
     </ScrollView>
   )
 }

@@ -36,7 +36,7 @@ function GameCard ({game,type = 'score'}) {
         <View style={stylesheet.textContainer}>
           <Text style={stylesheet.text}>{game.name}</Text>
           <View style={stylesheet.chipContainner}>
-            {game?.Platforms ? (<ChipList data={game?.Platforms}/>) : ""}
+            {game?.Platforms ? (<ChipList data={game?.Platforms} style={stylesheet.chipContainner}/>) : ""}
           </View>
 
           {type == 'score' ?
