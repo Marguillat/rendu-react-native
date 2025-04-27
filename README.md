@@ -1,97 +1,56 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Videogames - Application Mobile de Jeux
 
-# Getting Started
+## Description du Projet
+Cette application mobile permet de consulter depuis l'API de OpenCritique la liste des jeux à venir et les jeux faisant partie du Hall of Fame de l'année courante. 
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+En cliquant sur un jeux vous pouvez retrouver plus d'information sur celui-ci.
 
-## Step 1: Start Metro
+## Technologies Utilisées
+- React Native
+- JavaScript
+- React Navigation
+- React Native bootsplash
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## APIs Utilisées
+- OpenCritic par RapidAPI
+> [OpenCritic](https://opencritic.com) , à ne pas Confondre avec MetaCritic, est un agregateur de reviews et notes données aux jeux vidéos.
+> OpenCritic collecte ses données de par des centaines de publications, blogs et chaines de press en un seul endroit.
+> OpenCritic est 100% financé par son audience et ne dépend d'aucun organisme exterieur.
+> Pour plus d'infomations sur le fonctionnement de OpenCritic, je vous invite à consulter leur page [FAQ](https://opencritic.com/faq)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Clée d'API OpenCritic
+~~~text
+eaa77dc7a4msh031b69194d6e49bp13a3edjsna2cb89562b37
+~~~
+cléf gratuite d'authentification de l'API d'OpenCritic par RapidAPI
+elle est à mettre dans le fichier ``.env`` sous la variable d'environnement :
+- ``API_KEY``
 
-```sh
-# Using npm
-npm start
+Vous pouvez aussi en générer une vous même en passant directement par la page de [RapidAPI](https://rapidapi.com/opencritic-opencritic-default/api/opencritic-api/playground/apiendpoint_3eb6cbf3-25cf-4cfc-ba70-4fe91d6d78e9) 
 
-# OR using Yarn
-yarn start
+## Lancement de l'Application
+
+### Prérequis :
+
+- ``npm``
+- ``yarn`` #optionnel
+- ``nodejs``
+- ``android studio``
+
+Ici ``Java 21`` est utilisé
+
+### Installation
+```bash
+npm install
+# OU
+yarn 
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+#### Pour Android :
+```bash
 npm run android
-
-# OR using Yarn
+# OU
 yarn android
 ```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Screenshots
+Si tout à fonctionné vous devriez voir ceci : 
