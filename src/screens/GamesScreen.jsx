@@ -8,7 +8,7 @@ function GamesScreen() {
   return ( 
     <View style={style.container}>
       <GamesList title="Hall of Fame 2025" data={hallOfFame}/>
-      <GamesList title="Upcoming games" data={upcoming} type="date"/>
+      <GamesList title="Ils arrivent bientot" data={upcoming} type="date"/>
     </View>
    );
 }

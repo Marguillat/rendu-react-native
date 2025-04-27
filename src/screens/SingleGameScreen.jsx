@@ -5,10 +5,13 @@ import ChipList from "../components/lists/ChipList"
 function SingleGameScreen({route}) {
   const {gameId} = route.params
   const {game} = useSingleGame(gameId)
-
+  let bannerImg = 'https://www.systeme-de-design.gouv.fr/img/placeholder.16x9.png'
+  if (game?.images?.banner?.sm ) {
+    bannerImg = "https://img.opencritic.com/"+game?.images?.banner?.sm 
+  }
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image source={{ uri: "https://img.opencritic.com/"+game?.images?.banner?.sm }} style={styles.banner} />
+    <ScrollView contentContainerStyle={styles.container} >
+      <Image source={{ uri: bannerImg }} style={styles.banner} />
 
       <Text style={styles.name}>{game?.name}</Text>
 
@@ -37,7 +40,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212',
     flexGrow: 1,
     alignItems: 'left',
-    flex:1,
     gap:10
   },
   banner: {
